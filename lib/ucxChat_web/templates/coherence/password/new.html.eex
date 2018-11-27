@@ -1,0 +1,26 @@
+<br \>
+
+<%= form_for @changeset, password_path(@conn, :create), [id: "login-card", as: :password, class: "content-background-color color-primary-font-color"], fn f  -> %>
+
+  <div class="fields">
+    <div class="input-line">
+      <%= required_label f, :email, class: "control-label" %>
+      <%= text_input f, :email, class: "form-control", required: "" %>
+      <%= error_tag f, :email %>
+    </div>
+  </div>
+  <div class="submit">
+    <button data-loading-text="<%= ~g(Please wait...) %>" class="button primary login"><span><%= ~g(Reset password) %></span></button>
+  </div>
+  <div>
+    <button type="button" class="back-to-login"><%= ~g(Back to login) %></button>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('body').on('click', 'button.back-to-login', function(e) {
+      window.location = '/'
+    })
+  })
+</script>
